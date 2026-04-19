@@ -47,7 +47,7 @@ public class ProductServices {
         entity.setUnitPrice(product.getUnitPrice());
         return repository.save(entity);
     }
-    public void deleteById(Long id){
+    public void delete(Long id){
         logger.info("Deleting a product by id!");
         Product entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this id!"));
