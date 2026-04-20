@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/supermarket/src/main/resources/application.yaml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/supermarket/src/main/resources/application.yaml" />
+              <option name="originalContent" value="spring:&#10;  application:&#10;    name: supermarket&#10;  datasource:&#10;    driver-class-name: com.mysql.cj.jdbc.Driver&#10;    url: jdbc:mysql://localhost:3306/supermarket?useTimezone=true&amp;serverTimezone=UTC&#10;    username: root&#10;    password: 1234&#10;    jpa:&#10;      hibernate:&#10;        ddl-auto: update&#10;      properties:&#10;        hibernate:&#10;      show-sql: false&#10;      open-in-view: false&#10;server:&#10;  port: 9090&#10;" />
+              <option name="updatedContent" value="spring:&#10;  application:&#10;    name: supermarket&#10;  datasource:&#10;    driver-class-name: com.mysql.cj.jdbc.Driver&#10;    url: jdbc:mysql://localhost:3306/supermarket?useTimezone=true&amp;serverTimezone=UTC&#10;    username: root&#10;    password: 1234&#10;  jpa:&#10;    hibernate:&#10;      ddl-auto: update&#10;    show-sql: false&#10;    open-in-view: false&#10;server:&#10;  port: 9090&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

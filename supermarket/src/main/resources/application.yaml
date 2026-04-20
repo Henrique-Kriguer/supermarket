@@ -3,15 +3,8 @@ spring:
     name: supermarket
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/rest_with_spring_boot?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/supermarket?useTimezone=true&serverTimezone=UTC
     username: root
     password: 1234
-    jpa:
-      hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-      show-sql: false
-      open-in-view: false
 server:
   port: 9090

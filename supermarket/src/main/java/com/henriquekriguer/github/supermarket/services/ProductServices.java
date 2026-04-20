@@ -7,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 @Service
 public class ProductServices {
-
-    private final AtomicLong counter = new AtomicLong();
 
     private Logger logger = Logger.getLogger(ProductServices.class.getName());
 
@@ -29,11 +26,12 @@ public class ProductServices {
         logger.info("finding one product by id!");
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this id!"));
-
     }
 
     public Product create(Product product){
         logger.info("Creating a new product");
+        // Force insert flow and let the database generate the primary key.
+        product.setId(null);
         return repository.save(product);
     }
 

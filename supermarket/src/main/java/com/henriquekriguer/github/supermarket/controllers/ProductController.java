@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping"/product"
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -22,9 +22,11 @@ public class ProductController {
     public List<Product> findAll(){
         return service.findAll();
     }
-    @GetMapping(
+
+    @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Product findById(@PathVariable ("id") Long id){
+
         return service.findById(id);
     }
     @PostMapping(
@@ -32,6 +34,7 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Product create(@RequestBody Product product){
+
         return service.create(product);
     }
     @PutMapping(
@@ -39,6 +42,7 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Product update(@RequestBody Product product) {
+
         return service.update(product);
     }
     @DeleteMapping( value = "/{id}")
