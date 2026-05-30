@@ -1,0 +1,32 @@
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.card h2,
+.card h3 {
+  margin: 0 0 1rem 0;
+}
+
+.card + .card {
+  margin-top: 1rem;
+}
+
+.grid td button {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: #475569;
+  color: white;
+}
+
+.grid td button:hover {
+  opacity: 0.95;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+}

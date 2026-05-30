@@ -1,0 +1,97 @@
+<header>
+  <div class="container">
+    <h1>Finance Dashboard</h1>
+    <p>Manage your income and expenses using your Java backend API.</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Summary</h2>
+    <div class="form-grid" style="gap: 1rem; margin-top: 1rem;">
+      <div class="card" style="padding: 1rem;">
+        <h3>Total balance</h3>
+        <p style="font-size: 2rem; margin: 0.5rem 0;">{{ totalAmount | currency:'USD':'symbol':'1.0-0' }}</p>
+      </div>
+      <div class="card" style="padding: 1rem;">
+        <h3>Total income</h3>
+        <p style="font-size: 1.5rem; margin: 0.5rem 0; color: #047857;">{{ totalIncome | currency:'USD':'symbol':'1.0-0' }}</p>
+      </div>
+      <div class="card" style="padding: 1rem;">
+        <h3>Total expense</h3>
+        <p style="font-size: 1.5rem; margin: 0.5rem 0; color: #b91c1c;">{{ totalExpense | currency:'USD':'symbol':'1.0-0' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>{{ isEditing ? 'Edit Transaction' : 'Add Transaction' }}</h2>
+
+    <div *ngIf="errorMessage" style="margin-bottom: 1rem; color: #991b1b; font-weight: 700;">
+      {{ errorMessage }}
+    </div>
+
+    <form (ngSubmit)="submitForm()">
+      <div class="form-grid">
+        <div>
+          <label>Description</label>
+          <input [(ngModel)]="form.description" name="description" required maxlength="120" />
+        </div>
+        <div>
+          <label>Category</label>
+          <select [(ngModel)]="form.category" name="category">
+            <option>Income</option>
+            <option>Expense</option>
+            <option>Investment</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Amount</label>
+          <input type="number" [(ngModel)]="form.amount" name="amount" required />
+        </div>
+        <div>
+          <label>Date</label>
+          <input type="date" [(ngModel)]="form.date" name="date" required />
+        </div>
+      </div>
+
+      <div class="button-row" style="margin-top: 1rem;">
+        <button type="submit">{{ isEditing ? 'Save update' : 'Create' }}</button>
+        <button type="button" class="secondary" (click)="resetForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Transactions</h2>
+    <form (ngSubmit)="fetchProduct()" style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem;">
+      <label style="margin:0;">Product ID</label>
+      <input type="number" [(ngModel)]="productId" name="productId" min="1" style="width:5rem;" />
+      <button type="submit">Load</button>
+    </form>
+    <div *ngIf="productLoading" style="padding: 1rem;">Loading product...</div>
+    <div *ngIf="!productLoading && !product" style="padding: 1rem;">No product found.</div>
+
+    <table *ngIf="product" class="grid">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Unit Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.unit }}</td>
+          <td>{{ product.unitPrice | currency:'USD':'symbol':'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
